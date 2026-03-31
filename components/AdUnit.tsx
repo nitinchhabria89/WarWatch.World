@@ -203,7 +203,8 @@ function AdLabel() {
 
 export default function AdUnit({ slot, format = 'auto', style, className }: Props) {
   const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID;
-  const dummyMode = process.env.NEXT_PUBLIC_ADS_DUMMY === 'true';
+  // TODO: set dummyMode = false once Google AdSense is approved
+  const dummyMode = true;
   const ref = useRef<HTMLModElement>(null);
   const pushed = useRef(false);
 
