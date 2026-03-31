@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Globe background -->
+  <circle cx="50" cy="50" r="48" fill="#1a3a6e" stroke="#3b6dd4" stroke-width="2"/>
+  <!-- Latitude lines -->
+  <ellipse cx="50" cy="50" rx="48" ry="16" fill="none" stroke="#3b6dd4" stroke-width="1" opacity="0.6"/>
+  <ellipse cx="50" cy="50" rx="48" ry="32" fill="none" stroke="#3b6dd4" stroke-width="1" opacity="0.4"/>
+  <!-- Equator -->
+  <line x1="2" y1="50" x2="98" y2="50" stroke="#3b6dd4" stroke-width="1" opacity="0.6"/>
+  <!-- Longitude lines -->
+  <ellipse cx="50" cy="50" rx="20" ry="48" fill="none" stroke="#3b6dd4" stroke-width="1" opacity="0.5"/>
+  <ellipse cx="50" cy="50" rx="40" ry="48" fill="none" stroke="#3b6dd4" stroke-width="1" opacity="0.3"/>
+  <!-- Landmasses (simplified continents) -->
+  <!-- Europe/Africa -->
+  <path d="M46 18 Q50 16 54 20 L56 30 Q58 35 56 42 L54 50 Q52 56 54 62 L56 72 Q54 78 50 80 Q46 78 44 72 L42 62 Q40 56 42 50 L44 42 Q46 35 44 30 Z" fill="#22c55e" opacity="0.85"/>
+  <!-- Americas -->
+  <path d="M22 22 Q26 20 30 24 L32 34 Q34 42 32 50 L30 60 Q28 70 26 76 Q22 78 20 74 L18 62 Q16 52 18 44 L20 34 Z" fill="#22c55e" opacity="0.85"/>
+  <!-- Asia/Australia -->
+  <path d="M62 20 Q70 18 76 24 L78 34 Q80 42 76 48 L70 52 Q66 54 62 50 L60 40 Q58 30 62 20 Z" fill="#22c55e" opacity="0.85"/>
+  <path d="M72 62 Q76 60 80 64 L80 70 Q78 74 74 74 Q70 72 70 68 Z" fill="#22c55e" opacity="0.85"/>
+  <!-- Red conflict dot -->
+  <circle cx="56" cy="34" r="5" fill="#ef4444" opacity="0.9"/>
+  <circle cx="56" cy="34" r="8" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+</svg>
