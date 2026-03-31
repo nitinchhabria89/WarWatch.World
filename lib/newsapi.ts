@@ -1,53 +1,74 @@
 import type { Conflict, ConflictEvent } from './types';
 
-const BASE_URL = 'https://newsapi.org/v2';
+// newsapi.ai (Event Registry) endpoint
+const BASE_URL = 'https://eventregistry.org/api/v1/article/getArticles';
 
-interface NewsArticle {
+interface NewsAiArticle {
   title: string;
-  description: string | null;
+  body: string;
+  dateTime: string;        // "2026-03-31T14:00:00Z"
   url: string;
-  publishedAt: string;
-  source: { name: string };
+  source: { title: string };
 }
 
-// Fetch news for a single conflict. Uses the conflict name as primary query
-// for precision, falls back to country names.
+interface NewsAiResponse {
+  articles?: {
+    results?: NewsAiArticle[];
+  };
+  error?: string;
+}
+
 export async function fetchConflictNews(conflict: Conflict): Promise<ConflictEvent[]> {
   const apiKey = process.env.NEWSAPI_KEY;
   if (!apiKey) return [];
 
-  // Use conflict name + first country for a tight, relevant query
-  const terms = [conflict.name, conflict.countries[0]].filter(Boolean);
-  const query = terms.map((t) => `"${t}"`).join(' OR ');
+  const keywords = conflict.countries.slice(0, 2);
 
-  const url = `${BASE_URL}/everything?q=${encodeURIComponent(query)}&sortBy=publishedAt&pageSize=5&language=en&apiKey=${apiKey}`;
+  const body = {
+    action: 'getArticles',
+    keyword: keywords,
+    keywordOper: 'or',
+    articlesPage: 1,
+    articlesCount: 5,
+    articlesSortBy: 'date',
+    articlesSortByAsc: false,
+    lang: 'eng',
+    resultType: 'articles',
+    apiKey,
+  };
 
   try {
-    const res = await fetch(url, { cache: 'no-store' });
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      cache: 'no-store',
+    });
+
     if (!res.ok) {
-      console.error(`[newsapi] ${conflict.id}: HTTP ${res.status}`);
+      console.error(`[newsapi.ai] ${conflict.id}: HTTP ${res.status}`);
       return [];
     }
 
-    const data = await res.json();
+    const data: NewsAiResponse = await res.json();
 
-    if (data.status !== 'ok') {
-      console.error(`[newsapi] ${conflict.id}: ${data.message ?? 'unknown error'}`);
+    if (data.error) {
+      console.error(`[newsapi.ai] ${conflict.id}: ${data.error}`);
       return [];
     }
 
-    const articles: NewsArticle[] = data.articles ?? [];
+    const articles = data.articles?.results ?? [];
 
     return articles
       .filter((a) => a.title && a.title !== '[Removed]')
       .map((a) => ({
-        date: a.publishedAt.slice(0, 10),
-        description: `${a.title}${a.description ? '. ' + a.description : ''}`.slice(0, 300),
+        date: a.dateTime.slice(0, 10),
+        description: `${a.title}${a.body ? '. ' + a.body.slice(0, 200) : ''}`.slice(0, 300),
         tags: inferTags(a.title),
-        source: a.source.name,
+        source: a.source?.title ?? 'News',
       }));
   } catch (err) {
-    console.error(`[newsapi] ${conflict.id}:`, err);
+    console.error(`[newsapi.ai] ${conflict.id}:`, err);
     return [];
   }
 }
