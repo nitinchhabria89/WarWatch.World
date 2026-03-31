@@ -15,9 +15,10 @@ export async function fetchConflictNews(conflict: Conflict): Promise<ConflictEve
   if (!apiKey) return [];
 
   const query = conflict.countries.slice(0, 2).join(' OR ');
-  const url = `${BASE_URL}/everything?q=${encodeURIComponent(query)}&sortBy=publishedAt&pageSize=5&language=en&apiKey=${apiKey}`;
+  const from = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const url = `${BASE_URL}/everything?q=${encodeURIComponent(query)}&sortBy=publishedAt&from=${from}&pageSize=5&language=en&apiKey=${apiKey}`;
 
-  const res = await fetch(url, { next: { revalidate: 3600 } });
+  const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) return [];
 
   const data = await res.json();
