@@ -1,10 +1,11 @@
-# CrisisRadar.World — CLAUDE.md
+# WarWatch.World — CLAUDE.md
 
 ## Project Summary
 
-CrisisRadar.World is an open-source, real-time global crisis and conflict tracking platform. It aggregates news via NewsAPI, generates AI analysis with Claude, and presents data via an interactive world map, conflict feeds, AI chat, daily briefings, and market impact views.
+WarWatch.World is an open-source, real-time global war and conflict tracking platform. It aggregates news via NewsAPI, generates AI analysis with Groq (LLaMA), and presents data via an interactive world map, conflict feeds, AI chat, daily intelligence briefings, and market impact views.
 
-**Live repo:** https://github.com/nitinchhabria89/CrisisRadar.World
+**Live site:** https://warwatch.world
+**Live repo:** https://github.com/nitinchhabria89/WarWatch.World
 **License:** MIT
 
 ---
@@ -18,9 +19,11 @@ CrisisRadar.World is an open-source, real-time global crisis and conflict tracki
 | Map | Leaflet.js + react-leaflet (client-only) |
 | AI | Groq API (`llama-3.3-70b-versatile`) |
 | News | NewsAPI.org |
-| i18n | next-intl (10 languages) |
+| i18n | Client-side locale switching via localStorage (10 languages) |
 | Cache | JSON filesystem (`/data/cache/`) |
-| Deploy | Vercel (recommended) |
+| Analytics | Google Tag Manager (`GTM-TZ2DPPBX`) |
+| Ads | Google AdSense (`ca-pub-8381089290758563`) |
+| Deploy | Vercel |
 
 ---
 
@@ -29,45 +32,52 @@ CrisisRadar.World is an open-source, real-time global crisis and conflict tracki
 ```
 /
 ├── app/                        # Next.js App Router
-│   ├── layout.tsx              # Root layout (HTML shell, dark theme)
+│   ├── layout.tsx              # Root layout — GTM, AdSense, SEO metadata
 │   ├── page.tsx                # World map homepage (/)
-│   ├── [locale]/               # i18n locale wrapper
 │   ├── wars/page.tsx           # Active conflicts feed
 │   ├── ai-analyst/page.tsx     # AI chat interface
 │   ├── reports/
 │   │   ├── page.tsx            # Reports listing
 │   │   └── [date]/page.tsx     # Individual daily report
 │   ├── markets/page.tsx        # Markets impact
+│   ├── editorial-policy/       # Content neutrality policy
+│   ├── privacy-policy/         # GDPR / AdSense required
+│   ├── terms/                  # Terms of service
+│   ├── monetization-policy/    # Ad placement transparency
 │   └── api/
 │       ├── conflicts/route.ts  # GET conflicts data
 │       ├── refresh/route.ts    # POST trigger news refresh
 │       ├── generate-report/route.ts  # POST daily report generation
 │       └── ai-analyst/route.ts # POST streaming chat
 ├── components/
-│   ├── Header.tsx              # Persistent nav with UTC clock
-│   ├── Footer.tsx              # Attribution + links
-│   ├── WorldMap.tsx            # Leaflet map (client component)
-│   ├── CountryPanel.tsx        # Right-side country detail panel
+│   ├── Header.tsx              # Sticky nav — UTC clock, lang toggle, dark/light
+│   ├── Footer.tsx              # Attribution + policy links
+│   ├── WorldMap.tsx            # Leaflet map (client-only) — war front lines
+│   ├── BreakingMarquee.tsx     # Live breaking news ticker
+│   ├── CountryPanel.tsx        # Right-side conflict detail panel
 │   ├── ConflictCard.tsx        # Single conflict card
 │   ├── ConflictAccordion.tsx   # Expandable conflict list
 │   ├── AIChatInterface.tsx     # Streaming chat UI
 │   ├── AdUnit.tsx              # Google AdSense wrapper
-│   └── SeverityBadge.tsx       # Color-coded severity indicator
+│   ├── DisclaimerBanner.tsx    # Required on conflict pages
+│   ├── SeverityBadge.tsx       # Color-coded severity indicator
+│   └── ThemeProvider.tsx       # Dark/light theme context
 ├── data/
 │   ├── conflicts.json          # Seed + cached conflict data
-│   └── cache/                  # Auto-generated report cache
-├── messages/                   # i18n translation files
-│   ├── en.json
-│   └── [ar|fr|es|de|hi|pt|tr|uk|ru].json
+│   └── cache/                  # Auto-generated report cache (gitignored)
+├── messages/                   # Language files (client-side only)
+│   └── [en|ar|fr|es|de|hi|pt|tr|uk|ru].json
 ├── lib/
 │   ├── types.ts                # Shared TypeScript types
 │   ├── conflicts.ts            # Data access helpers
-│   └── newsapi.ts              # NewsAPI client
-├── i18n.ts                     # next-intl config
-├── CLAUDE.md                   # This file
-├── CONTRIBUTING.md
-├── README.md
-└── .env.local.example
+│   ├── newsapi.ts              # NewsAPI client
+│   └── utils.ts                # Shared utilities
+├── public/
+│   ├── favicon.png             # Globe favicon
+│   └── ads.txt                 # Google AdSense ads.txt
+├── vercel.json                 # Vercel build config
+├── next.config.js              # Next.js config (no next-intl — client-side i18n only)
+└── CLAUDE.md                   # This file
 ```
 
 ---
@@ -91,7 +101,7 @@ Map polygons use opacity `0.6` on fill, `0.8` on hover.
 Returns the current `conflicts.json`. No auth required.
 
 ### `POST /api/refresh`
-Fetches latest news from NewsAPI, updates conflict summaries. Requires `NEWSAPI_KEY`. Should be called by a cron job every 60 minutes (Vercel Cron or similar).
+Fetches latest news from NewsAPI, updates conflict summaries. Requires `NEWSAPI_KEY`. Called by Vercel Cron every 60 minutes.
 
 ### `POST /api/generate-report`
 Calls Groq (llama-3.3-70b-versatile) to generate a daily intelligence briefing. Stores result in `/data/cache/report-[YYYY-MM-DD].json`. Requires `GROQ_API_KEY`.
@@ -106,10 +116,43 @@ Streams Groq responses. Body: `{ message: string, history: Message[] }`. Returns
 ```bash
 GROQ_API_KEY=               # Required — free at console.groq.com
 NEWSAPI_KEY=                # Required — newsapi.org
-NEXT_PUBLIC_SITE_URL=       # Required — https://crisisradar.world
-NEXT_PUBLIC_GITHUB_URL=     # https://github.com/nitinchhabria89/CrisisRadar.World
-NEXT_PUBLIC_ADSENSE_PUB_ID= # Optional — Google AdSense pub-XXXXXXX
+NEXT_PUBLIC_SITE_URL=       # Required — https://warwatch.world
+NEXT_PUBLIC_GITHUB_URL=     # https://github.com/nitinchhabria89/WarWatch.World
+NEXT_PUBLIC_ADSENSE_PUB_ID= # Optional — Google AdSense (ca-pub-8381089290758563)
 ```
+
+---
+
+## Analytics & Ads
+
+| Service | ID | Location |
+|---|---|---|
+| Google Tag Manager | `GTM-TZ2DPPBX` | `<head>` via `next/script beforeInteractive` |
+| Google AdSense | `ca-pub-8381089290758563` | `<head>` + `AdUnit` component |
+| ads.txt | `public/ads.txt` | Served at `/ads.txt` |
+| Search Console | `ap8f63s9HE_pwCs_...` | `metadata.verification.google` |
+
+---
+
+## i18n (Language Support)
+
+**10 languages:** `en ar fr es de hi pt tr uk ru`
+
+Language switching is **100% client-side** — stored in `localStorage`, no URL-based routing. The `Header.tsx` language dropdown handles selection. Translation JSON files in `/messages/` are reserved for future server-side i18n if needed.
+
+> ⚠️ `next-intl` has been removed — it was causing 404s by intercepting routes. Do NOT re-add it without also adding `middleware.ts` and `app/[locale]/` routing.
+
+---
+
+## SEO
+
+Every page exports `metadata` with:
+- Targeted `title` and `description`
+- `keywords` array
+- `openGraph` with `url` and `alternates.canonical`
+- Root layout has `verification.google` for Search Console
+- `sitemap.ts` covers all static + dynamic report routes
+- `robots.ts` allows all pages, disallows `/api/`
 
 ---
 
@@ -117,70 +160,42 @@ NEXT_PUBLIC_ADSENSE_PUB_ID= # Optional — Google AdSense pub-XXXXXXX
 
 | Slot | Dimensions | Location |
 |---|---|---|
-| Billboard | 970×250 | Below header |
-| Left Rail | 160×600 sticky | Left sidebar |
-| Right Rail | 160×600 sticky | Right sidebar |
-| Half Page | 300×600 | Right column |
-| In-content | 300×250 | Between conflict cards |
-| Mobile Anchor | 320×50 sticky | Bottom of viewport (mobile) |
-| Footer | 728×90 → 300×250 | Footer leaderboard |
-
-All ads are lazy-loaded. The `<AdUnit>` component checks for `NEXT_PUBLIC_ADSENSE_PUB_ID` and renders nothing if not set — this allows development without ads.
-
----
-
-## i18n
-
-Supported locales: `en ar fr es de hi pt tr uk ru`
-
-Route pattern: `/[locale]/...` — the root `/` auto-redirects based on `Accept-Language` header.
-
-Translation keys live in `/messages/[locale].json`. All UI strings must use `useTranslations()` from `next-intl`. Never hardcode display text in components.
-
----
-
-## Policy & Compliance Pages
-
-| Route | Purpose | AdSense Required? |
-|---|---|---|
-| `/editorial-policy` | Neutrality standards, data sourcing, tag definitions | Yes — sensitive content |
-| `/privacy-policy` | Cookie/data disclosure, Google AdSense cookies | **Yes — mandatory** |
-| `/terms` | Disclaimer, acceptable use, liability | Yes |
-| `/monetization-policy` | Ad placement explanation, editorial independence | Yes — transparency |
-
-All policy pages are linked in the Footer on every page.
+| Billboard | 970×250 | Below header on homepage |
+| Left Rail | 160×600 sticky | Left sidebar (events section) |
+| Right Rail | 160×600 sticky | Right sidebar (events section) |
+| In-content | 300×250 | Between conflict cards every 8 items |
+| Mobile Anchor | 320×50 | Bottom of viewport (mobile) |
+| Footer | 728×90 | Footer leaderboard |
 
 ---
 
 ## Content Neutrality Rules (AdSense Compliance)
 
-These rules are **non-negotiable** to maintain Google AdSense eligibility. Any AI-generated or human-contributed conflict content must follow them:
-
-1. **Factual status framing only** — write `"Military operations began on [date]"`, never `"brutal invasion"` or `"heroic defense"`
-2. **Attribute disputed claims** — use `"according to [source]"` for any claim that one party disputes
-3. **No politically loaded labels** — do not call any group "terrorists" without quoting an authoritative body that formally designated them; use the group's own name or neutral description
-4. **Consistent terminology** — use the same tone and style for all parties in a conflict regardless of political alignment
-5. **No evaluative language** — avoid words like "illegal," "justified," "disproportionate," "atrocity" unless directly quoting a court, UN body, or official resolution
-6. **Event tags are factual categories only** — allowed: `Airstrike`, `Military`, `Diplomatic`, `Sanctions`, `Ceasefire`, `Casualties`, `Humanitarian`, `News`. Do not create tags that imply moral judgment.
-7. **`DisclaimerBanner` component required** on all pages showing conflict data (wars, markets, homepage)
+1. **Factual status framing only** — no evaluative language
+2. **Attribute disputed claims** — use `"according to [source]"`
+3. **No politically loaded labels** — use group's own name or neutral description
+4. **Consistent terminology** — same tone for all parties
+5. **No evaluative language** — avoid "illegal," "justified," "atrocity" unless quoting official bodies
+6. **Event tags are factual only** — `Airstrike`, `Military`, `Diplomatic`, `Sanctions`, `Ceasefire`, `Casualties`, `Humanitarian`, `News`
+7. **`DisclaimerBanner` required** on all pages showing conflict data
 
 ---
 
 ## Key Implementation Rules
 
-1. **Leaflet is client-only** — always use `dynamic(() => import('./WorldMap'), { ssr: false })` to avoid SSR errors.
-2. **Claude model** — use `claude-sonnet-4-6` unless the task is simple (then `claude-haiku-4-5-20251001` for cost).
-3. **Streaming** — the AI Analyst chat uses `anthropic.messages.stream()` and forwards SSE to the client via `ReadableStream`.
-4. **Caching** — NewsAPI responses are cached to `/data/cache/` to avoid hitting rate limits. TTL = 60 minutes.
-5. **No client-side API keys** — all Anthropic and NewsAPI calls happen in API routes only, never in client components.
-6. **SEO** — every page exports `generateMetadata()` with dynamic titles, descriptions, and OG tags.
-7. **Severity order** — when sorting conflicts, use: war > escalating > instability > stable.
+1. **Leaflet is client-only** — always use `dynamic(() => import('./WorldMap'), { ssr: false })`
+2. **AI model** — Groq `llama-3.3-70b-versatile` for all AI features
+3. **Streaming** — AI Analyst uses streaming SSE via `ReadableStream`
+4. **Caching** — NewsAPI responses cached to `/data/cache/` (TTL 60 min)
+5. **No client-side API keys** — all Groq and NewsAPI calls in API routes only
+6. **Severity order** — `war > escalating > instability > stable`
+7. **No next-intl** — removed; language is client-side localStorage only
 
 ---
 
 ## Adding a New Conflict
 
-Edit `/data/conflicts.json` and add an entry following this shape:
+Edit `/data/conflicts.json`:
 
 ```json
 {
@@ -190,50 +205,31 @@ Edit `/data/conflicts.json` and add an entry following this shape:
   "countryCodes": ["XX", "YY"],
   "severity": "war | escalating | instability | stable",
   "status": "One-line status summary",
-  "summary": "2-3 sentence AI or manual summary",
+  "summary": "2-3 sentence summary",
   "startDate": "YYYY-MM-DD",
   "lastUpdated": "YYYY-MM-DD",
-  "tags": ["Airstrike", "Diplomatic", "Sanctions"],
-  "events": [
-    {
-      "date": "YYYY-MM-DD",
-      "description": "Event description",
-      "tags": ["Airstrike"]
-    }
-  ],
-  "marketImpact": {
-    "oil": "high | medium | low | none",
-    "gold": "high | medium | low | none"
-  }
+  "tags": ["Airstrike", "Diplomatic"],
+  "events": [{ "date": "YYYY-MM-DD", "description": "...", "tags": ["Airstrike"] }],
+  "marketImpact": { "oil": "high | medium | low | none", "gold": "high | medium | low | none" }
 }
 ```
 
 ---
 
-## Adding a New Language
-
-1. Create `/messages/[locale].json` (copy from `en.json`, translate values).
-2. Add the locale code to the `locales` array in `i18n.ts`.
-3. Add an `hreflang` entry in the root layout's `<head>`.
-4. Submit a PR — translations are community-maintained.
-
----
-
 ## Deployment (Vercel)
 
-1. Fork the repo, connect to Vercel.
-2. Set environment variables in Vercel dashboard.
-3. Add a Vercel Cron job: `POST /api/refresh` every hour (`0 * * * *`).
-4. Optionally add `POST /api/generate-report` daily at midnight UTC (`0 0 * * *`).
+1. Fork repo, connect to Vercel (ensure correct GitHub account is linked)
+2. Set all environment variables in Vercel dashboard
+3. Add Vercel Cron: `POST /api/refresh` every hour (`0 * * * *`)
+4. Add Vercel Cron: `POST /api/generate-report` daily (`0 0 * * *`)
+5. Domain: `warwatch.world` assigned in Vercel project settings
 
 ---
 
-## Common Development Tasks
+## Common Development Commands
 
 ```bash
 npm run dev          # Start dev server (localhost:3000)
 npm run build        # Production build
 npm run lint         # ESLint check
 ```
-
-To test AI features locally, ensure `GROQ_API_KEY` and `NEWSAPI_KEY` are set in `.env.local`.

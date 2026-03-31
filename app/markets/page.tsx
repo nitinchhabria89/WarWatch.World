@@ -5,9 +5,20 @@ import SeverityBadge from '@/components/SeverityBadge';
 import DisclaimerBanner from '@/components/DisclaimerBanner';
 
 export const metadata: Metadata = {
-  title: 'Markets & Conflict Impact',
+  title: 'War & Conflict Market Impact — Oil, Gold & Commodity Prices',
   description:
-    'See how active global conflicts affect oil and gold commodity prices. Correlation table updated in real-time.',
+    'See how active wars and global conflicts drive oil and gold prices. Real-time correlation between military escalations, geopolitical crises and commodity markets.',
+  keywords: [
+    'war impact on markets', 'conflict oil prices', 'geopolitical risk markets',
+    'war gold prices', 'oil price war', 'commodity prices conflict',
+    'geopolitical market impact', 'war economy', 'conflict commodities',
+  ],
+  openGraph: {
+    title: 'War & Conflict Market Impact — Oil, Gold & Commodities | WarWatch.World',
+    description: 'Real-time correlation between active wars, geopolitical crises and commodity market prices.',
+    url: 'https://warwatch.world/markets',
+  },
+  alternates: { canonical: 'https://warwatch.world/markets' },
 };
 
 const IMPACT_CLASSES: Record<string, string> = {

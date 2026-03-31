@@ -3,9 +3,20 @@ import AIChatInterface from '@/components/AIChatInterface';
 import AdUnit from '@/components/AdUnit';
 
 export const metadata: Metadata = {
-  title: 'AI Analyst',
+  title: 'AI Geopolitical Analyst — Ask About Any War or Conflict',
   description:
-    'Ask an AI geopolitical analyst about active global conflicts. Powered by Anthropic Claude with real-time conflict context and streaming responses.',
+    'Chat with an AI geopolitical analyst about any active war or conflict. Get instant, in-depth analysis on Russia-Ukraine, Gaza, Sudan and more. Powered by advanced AI with real-time conflict data.',
+  keywords: [
+    'AI geopolitical analyst', 'war analysis AI', 'conflict analysis',
+    'geopolitics AI chat', 'ask about wars', 'AI military analyst',
+    'geopolitical intelligence', 'war expert AI',
+  ],
+  openGraph: {
+    title: 'AI Geopolitical Analyst | WarWatch.World',
+    description: 'Get instant AI-powered analysis on any active war or global conflict. Ask anything about geopolitics.',
+    url: 'https://warwatch.world/ai-analyst',
+  },
+  alternates: { canonical: 'https://warwatch.world/ai-analyst' },
 };
 
 export default function AIAnalystPage() {

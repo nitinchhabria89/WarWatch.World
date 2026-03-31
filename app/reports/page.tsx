@@ -5,9 +5,20 @@ import AdUnit from '@/components/AdUnit';
 import { formatDate } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Intelligence Reports',
+  title: 'Daily War Intelligence Reports — AI Geopolitical Briefings',
   description:
-    'Daily AI-generated geopolitical intelligence briefings covering active global conflicts, regional breakdowns, and commodity market impact.',
+    'Daily AI-generated intelligence briefings on every active war and global conflict. Regional breakdowns, threat assessments, market impact and conflict timelines — updated every 24 hours.',
+  keywords: [
+    'geopolitical intelligence report', 'daily war briefing', 'conflict intelligence',
+    'AI intelligence report', 'war briefing today', 'geopolitical analysis',
+    'global security report', 'conflict briefing 2025', 'war news summary',
+  ],
+  openGraph: {
+    title: 'Daily War Intelligence Reports | WarWatch.World',
+    description: 'AI-generated daily intelligence briefings covering every active war and global conflict worldwide.',
+    url: 'https://warwatch.world/reports',
+  },
+  alternates: { canonical: 'https://warwatch.world/reports' },
 };
 
 export default function ReportsPage() {
