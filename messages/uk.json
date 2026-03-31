@@ -5,7 +5,8 @@
     "aiAnalyst": "ШІ-аналітик",
     "reports": "Звіти",
     "markets": "Ринки",
-    "github": "GitHub"
+    "github": "GitHub",
+    "countryRisk": "Ризик Країни"
   },
   "home": {
     "trackedConflicts": "{count} відстежуваних конфліктів",

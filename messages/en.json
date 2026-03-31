@@ -2,6 +2,7 @@
   "nav": {
     "map": "Map",
     "wars": "Active Conflicts",
+    "countryRisk": "Country Risk",
     "aiAnalyst": "AI Analyst",
     "reports": "Reports",
     "markets": "Markets",

@@ -5,7 +5,8 @@
     "aiAnalyst": "المحلل الذكي",
     "reports": "التقارير",
     "markets": "الأسواق",
-    "github": "GitHub"
+    "github": "GitHub",
+    "countryRisk": "مخاطر البلد"
   },
   "home": {
     "trackedConflicts": "{count} نزاع مُتتبَّع",

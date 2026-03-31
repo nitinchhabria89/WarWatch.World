@@ -5,7 +5,8 @@
     "aiAnalyst": "AI विश्लेषक",
     "reports": "रिपोर्ट",
     "markets": "बाज़ार",
-    "github": "GitHub"
+    "github": "GitHub",
+    "countryRisk": "देश जोखिम"
   },
   "home": {
     "trackedConflicts": "{count} ट्रैक किए गए संघर्ष",

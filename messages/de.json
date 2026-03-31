@@ -5,7 +5,8 @@
     "aiAnalyst": "KI-Analyst",
     "reports": "Berichte",
     "markets": "Märkte",
-    "github": "GitHub"
+    "github": "GitHub",
+    "countryRisk": "Länderrisiko"
   },
   "home": {
     "trackedConflicts": "{count} verfolgte Konflikte",

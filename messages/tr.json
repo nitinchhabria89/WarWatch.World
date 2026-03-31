@@ -5,7 +5,8 @@
     "aiAnalyst": "YZ Analist",
     "reports": "Raporlar",
     "markets": "Piyasalar",
-    "github": "GitHub"
+    "github": "GitHub",
+    "countryRisk": "Ülke Riski"
   },
   "home": {
     "trackedConflicts": "{count} takip edilen çatışma",

@@ -5,7 +5,8 @@
     "aiAnalyst": "Analista IA",
     "reports": "Relatórios",
     "markets": "Mercados",
-    "github": "GitHub"
+    "github": "GitHub",
+    "countryRisk": "Risco País"
   },
   "home": {
     "trackedConflicts": "{count} conflitos rastreados",

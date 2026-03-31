@@ -30,11 +30,12 @@ export default function Header() {
   const langDropRef = useRef<HTMLDivElement>(null);
 
   const NAV_LINKS = [
-    { href: '/',           label: t('nav.map') },
-    { href: '/wars',       label: t('nav.wars') },
-    { href: '/ai-analyst', label: t('nav.aiAnalyst') },
-    { href: '/reports',    label: t('nav.reports') },
-    { href: '/markets',    label: t('nav.markets') },
+    { href: '/',              label: t('nav.map') },
+    { href: '/wars',          label: t('nav.wars') },
+    { href: '/country-risk',  label: t('nav.countryRisk') },
+    { href: '/ai-analyst',    label: t('nav.aiAnalyst') },
+    { href: '/reports',       label: t('nav.reports') },
+    { href: '/markets',       label: t('nav.markets') },
   ];
 
   // UTC clock
