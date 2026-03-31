@@ -12,9 +12,9 @@ const PUB_ID = RAW_PUB_ID && RAW_PUB_ID !== 'pub-XXXXXXXXXXXXXXXX' ? RAW_PUB_ID 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
   title: {
     default: 'WarWatch.World — Real-Time Global Conflict Tracker',
