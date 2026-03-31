@@ -3,6 +3,7 @@ import { getConflicts } from '@/lib/conflicts';
 import AdUnit from '@/components/AdUnit';
 import SeverityBadge from '@/components/SeverityBadge';
 import DisclaimerBanner from '@/components/DisclaimerBanner';
+import PageHeading from '@/components/PageHeading';
 
 export const metadata: Metadata = {
   title: 'War & Conflict Market Impact — Oil, Gold & Commodity Prices',
@@ -48,12 +49,7 @@ export default function MarketsPage() {
         <AdUnit slot="markets-billboard-mobile" style={{ width: 320, height: 50 }} className="md:hidden" />
       </div>
 
-      <div className="mb-4">
-        <h1 className="text-2xl font-bold text-white mb-1">Markets & Conflict Impact</h1>
-        <p className="text-gray-400 text-sm">
-          How active conflicts correlate with commodity price pressure
-        </p>
-      </div>
+      <PageHeading titleKey="markets.title" subtitleKey="markets.subtitle" />
 
       <DisclaimerBanner />
 

@@ -3,6 +3,7 @@ import { getConflicts } from '@/lib/conflicts';
 import ConflictAccordion from '@/components/ConflictAccordion';
 import AdUnit from '@/components/AdUnit';
 import DisclaimerBanner from '@/components/DisclaimerBanner';
+import PageHeading from '@/components/PageHeading';
 
 export const metadata: Metadata = {
   title: 'Active Wars & Conflicts 2025 — Live Updates',
@@ -45,12 +46,11 @@ export default function WarsPage({
         <AdUnit slot="wars-billboard-mobile" style={{ width: 320, height: 50 }} className="md:hidden" />
       </div>
 
-      <div className="mb-4">
-        <h1 className="text-2xl font-bold text-white mb-1">Active Conflicts</h1>
-        <p className="text-gray-400 text-sm">
-          {conflicts.length} tracked conflicts · Click any row to expand the full event log
-        </p>
-      </div>
+      <PageHeading
+        titleKey="wars.title"
+        subtitleKey="wars.subtitle"
+        subtitleParams={{ count: conflicts.length }}
+      />
 
       <DisclaimerBanner />
 

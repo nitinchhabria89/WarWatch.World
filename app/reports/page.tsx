@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { listReportDates, getReport } from '@/lib/conflicts';
 import AdUnit from '@/components/AdUnit';
 import { formatDate } from '@/lib/utils';
+import PageHeading from '@/components/PageHeading';
 
 export const metadata: Metadata = {
   title: 'Daily War Intelligence Reports — AI Geopolitical Briefings',
@@ -32,12 +33,7 @@ export default function ReportsPage() {
         <AdUnit slot="reports-billboard" style={{ width: 728, height: 90 }} className="hidden md:block" />
       </div>
 
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white mb-1">Intelligence Reports</h1>
-        <p className="text-gray-400 text-sm">
-          AI-generated daily briefings · Updated every 24 hours
-        </p>
-      </div>
+      <PageHeading titleKey="reports.title" subtitleKey="reports.subtitle" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-4">

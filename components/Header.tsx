@@ -5,36 +5,37 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import { useTheme } from './ThemeProvider';
+import { useLocale, SUPPORTED_LOCALES } from './LocaleProvider';
 
-const NAV_LINKS = [
-  { href: '/', label: 'Map' },
-  { href: '/wars', label: 'Active Conflicts' },
-  { href: '/ai-analyst', label: 'AI Analyst' },
-  { href: '/reports', label: 'Reports' },
-  { href: '/markets', label: 'Markets' },
-];
-
-const LOCALES: { code: string; label: string; flag: string }[] = [
-  { code: 'en', label: 'English',    flag: '🇬🇧' },
-  { code: 'ar', label: 'العربية',    flag: '🇸🇦' },
-  { code: 'fr', label: 'Français',   flag: '🇫🇷' },
-  { code: 'es', label: 'Español',    flag: '🇪🇸' },
-  { code: 'de', label: 'Deutsch',    flag: '🇩🇪' },
-  { code: 'hi', label: 'हिन्दी',     flag: '🇮🇳' },
-  { code: 'pt', label: 'Português',  flag: '🇵🇹' },
-  { code: 'tr', label: 'Türkçe',     flag: '🇹🇷' },
-  { code: 'uk', label: 'Українська', flag: '🇺🇦' },
-  { code: 'ru', label: 'Русский',    flag: '🇷🇺' },
-];
+const LOCALE_META: Record<string, { label: string; flag: string }> = {
+  en: { label: 'English',    flag: '🇬🇧' },
+  ar: { label: 'العربية',    flag: '🇸🇦' },
+  fr: { label: 'Français',   flag: '🇫🇷' },
+  es: { label: 'Español',    flag: '🇪🇸' },
+  de: { label: 'Deutsch',    flag: '🇩🇪' },
+  hi: { label: 'हिन्दी',     flag: '🇮🇳' },
+  pt: { label: 'Português',  flag: '🇵🇹' },
+  tr: { label: 'Türkçe',     flag: '🇹🇷' },
+  uk: { label: 'Українська', flag: '🇺🇦' },
+  ru: { label: 'Русский',    flag: '🇷🇺' },
+};
 
 export default function Header() {
   const [utcTime, setUtcTime] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [locale, setLocale] = useState('en');
   const pathname = usePathname();
   const { theme, toggle: toggleTheme } = useTheme();
+  const { locale, setLocale, t } = useLocale();
   const langDropRef = useRef<HTMLDivElement>(null);
+
+  const NAV_LINKS = [
+    { href: '/',           label: t('nav.map') },
+    { href: '/wars',       label: t('nav.wars') },
+    { href: '/ai-analyst', label: t('nav.aiAnalyst') },
+    { href: '/reports',    label: t('nav.reports') },
+    { href: '/markets',    label: t('nav.markets') },
+  ];
 
   // UTC clock
   useEffect(() => {
@@ -45,12 +46,6 @@ export default function Header() {
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, []);
-
-  // Restore saved locale
-  useEffect(() => {
-    const saved = localStorage.getItem('locale');
-    if (saved && LOCALES.some((l) => l.code === saved)) setLocale(saved);
   }, []);
 
   // Close language dropdown on outside click
@@ -74,11 +69,10 @@ export default function Header() {
     return () => document.removeEventListener('keydown', handler);
   }, []);
 
-  const currentLocale = LOCALES.find((l) => l.code === locale) ?? LOCALES[0];
+  const currentMeta = LOCALE_META[locale] ?? LOCALE_META.en;
 
   function selectLocale(code: string) {
-    setLocale(code);
-    localStorage.setItem('locale', code);
+    setLocale(code as typeof SUPPORTED_LOCALES[number]);
     setLangOpen(false);
   }
 
@@ -117,11 +111,11 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right side: UTC + lang + theme + github */}
+          {/* Right side */}
           <div className="flex items-center gap-2">
             <span className="hidden md:block text-xs text-gray-600 font-mono shrink-0">{utcTime}</span>
 
-            {/* Language toggle — single button, works on all screen sizes */}
+            {/* Language toggle */}
             <button
               onClick={() => setLangOpen((v) => !v)}
               className={clsx(
@@ -134,8 +128,8 @@ export default function Header() {
               aria-expanded={langOpen}
               title="Change language"
             >
-              <span className="text-base leading-none">{currentLocale.flag}</span>
-              <span className="hidden sm:inline text-[11px] uppercase tracking-wide">{currentLocale.code}</span>
+              <span className="text-base leading-none">{currentMeta.flag}</span>
+              <span className="hidden sm:inline text-[11px] uppercase tracking-wide">{locale}</span>
               <svg
                 className={clsx('w-3 h-3 transition-transform hidden sm:block', langOpen && 'rotate-180')}
                 fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -170,7 +164,7 @@ export default function Header() {
               target="_blank" rel="noopener noreferrer"
               className="hidden md:block text-gray-500 hover:text-white transition-colors text-xs px-2 py-1 border border-white/10 rounded hover:bg-white/5"
             >
-              GitHub
+              {t('nav.github')}
             </a>
 
             {/* Mobile hamburger */}
@@ -210,14 +204,13 @@ export default function Header() {
         )}
       </header>
 
-      {/* ── Language Dropdown ── fixed below header, works on all screen sizes */}
+      {/* Language Dropdown — fixed below header */}
       {langOpen && (
         <div
           ref={langDropRef}
           className="fixed top-14 right-4 z-[9999] shadow-2xl rounded-xl overflow-hidden border border-white/10 w-52"
           style={{ background: 'var(--cr-card)' }}
         >
-          {/* Header */}
           <div className="px-4 py-2.5 border-b border-white/10 flex items-center justify-between">
             <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Language</span>
             <button
@@ -231,29 +224,31 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Scrollable language list */}
           <div className="overflow-y-auto" style={{ maxHeight: 'calc(100dvh - 120px)' }}>
-            {LOCALES.map((loc) => (
-              <button
-                key={loc.code}
-                onClick={() => selectLocale(loc.code)}
-                className={clsx(
-                  'w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors text-left',
-                  locale === loc.code
-                    ? 'bg-blue-500/15 text-blue-400 font-semibold'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
-                )}
-              >
-                <span className="text-xl leading-none w-7 shrink-0">{loc.flag}</span>
-                <span className="flex-1">{loc.label}</span>
-                <span className="text-[10px] uppercase tracking-widest text-gray-600">{loc.code}</span>
-                {locale === loc.code && (
-                  <svg className="w-3.5 h-3.5 text-blue-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                )}
-              </button>
-            ))}
+            {SUPPORTED_LOCALES.map((code) => {
+              const meta = LOCALE_META[code];
+              return (
+                <button
+                  key={code}
+                  onClick={() => selectLocale(code)}
+                  className={clsx(
+                    'w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors text-left',
+                    locale === code
+                      ? 'bg-blue-500/15 text-blue-400 font-semibold'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  )}
+                >
+                  <span className="text-xl leading-none w-7 shrink-0">{meta.flag}</span>
+                  <span className="flex-1">{meta.label}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-gray-600">{code}</span>
+                  {locale === code && (
+                    <svg className="w-3.5 h-3.5 text-blue-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}

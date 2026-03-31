@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import AIChatInterface from '@/components/AIChatInterface';
 import AdUnit from '@/components/AdUnit';
+import PageHeading from '@/components/PageHeading';
 
 export const metadata: Metadata = {
   title: 'AI Geopolitical Analyst — Ask About Any War or Conflict',
@@ -31,12 +32,7 @@ export default function AIAnalystPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Chat — spans 2 cols */}
         <div className="lg:col-span-2">
-          <div className="mb-4">
-            <h1 className="text-2xl font-bold text-white mb-1">AI Analyst</h1>
-            <p className="text-gray-400 text-sm">
-              Powered by Claude · Real-time conflict context · Ask anything about global crises
-            </p>
-          </div>
+          <PageHeading titleKey="aiAnalyst.title" subtitleKey="aiAnalyst.subtitle" />
 
           <div
             className="bg-[#111827] border border-white/10 rounded-xl overflow-hidden"

@@ -1,8 +1,20 @@
+'use client';
+
 import Link from 'next/link';
 import AdUnit from './AdUnit';
+import { useLocale } from './LocaleProvider';
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { t } = useLocale();
+
+  const NAV_LINKS = [
+    { href: '/',           label: t('nav.map') },
+    { href: '/wars',       label: t('nav.wars') },
+    { href: '/ai-analyst', label: t('nav.aiAnalyst') },
+    { href: '/reports',    label: t('nav.reports') },
+    { href: '/markets',    label: t('nav.markets') },
+  ];
 
   return (
     <footer className="bg-[#111827] border-t border-white/10 mt-12">
@@ -25,19 +37,13 @@ export default function Footer() {
           <div>
             <p className="font-semibold text-white mb-3">WarWatch.world</p>
             <p className="text-xs text-gray-500 leading-relaxed">
-              Free, open-source real-time global crisis tracking. Powered by AI analysis and NewsAPI.
+              {t('footer.description')}
             </p>
           </div>
           <div>
             <p className="font-semibold text-gray-300 text-sm mb-3">Navigate</p>
             <ul className="space-y-2">
-              {[
-                { href: '/', label: 'World Map' },
-                { href: '/wars', label: 'Active Conflicts' },
-                { href: '/ai-analyst', label: 'AI Analyst' },
-                { href: '/reports', label: 'Reports' },
-                { href: '/markets', label: 'Markets' },
-              ].map((l) => (
+              {NAV_LINKS.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
                     {l.label}
@@ -50,32 +56,20 @@ export default function Footer() {
             <p className="font-semibold text-gray-300 text-sm mb-3">Open Source</p>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="https://github.com/nitinchhabria89/WarWatch.World"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-                >
+                <a href="https://github.com/nitinchhabria89/WarWatch.World" target="_blank" rel="noopener noreferrer"
+                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
                   GitHub Repository
                 </a>
               </li>
               <li>
-                <a
-                  href="https://github.com/nitinchhabria89/WarWatch.World/blob/main/CONTRIBUTING.md"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-                >
+                <a href="https://github.com/nitinchhabria89/WarWatch.World/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer"
+                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
                   Contributing
                 </a>
               </li>
               <li>
-                <a
-                  href="https://github.com/nitinchhabria89/WarWatch.World/blob/main/LICENSE"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-                >
+                <a href="https://github.com/nitinchhabria89/WarWatch.World/blob/main/LICENSE" target="_blank" rel="noopener noreferrer"
+                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
                   MIT License
                 </a>
               </li>
@@ -85,10 +79,10 @@ export default function Footer() {
             <p className="font-semibold text-gray-300 text-sm mb-3">Policies</p>
             <ul className="space-y-2">
               {[
-                { href: '/editorial-policy', label: 'Editorial Policy' },
-                { href: '/privacy-policy', label: 'Privacy Policy' },
-                { href: '/terms', label: 'Terms & Conditions' },
-                { href: '/monetization-policy', label: 'Monetization Policy' },
+                { href: '/editorial-policy',    label: 'Editorial Policy' },
+                { href: '/privacy-policy',       label: 'Privacy Policy' },
+                { href: '/terms',                label: 'Terms & Conditions' },
+                { href: '/monetization-policy',  label: 'Monetization Policy' },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
@@ -102,18 +96,14 @@ export default function Footer() {
             <p className="font-semibold text-gray-300 text-sm mb-3">Data Sources</p>
             <ul className="space-y-2">
               {[
-                { href: 'https://newsapi.org', label: 'NewsAPI.org' },
-                { href: 'https://www.anthropic.com', label: 'Anthropic Claude' },
-                { href: 'https://leafletjs.com', label: 'Leaflet.js' },
-                { href: 'https://cartodb.com', label: 'CartoDB Tiles' },
+                { href: 'https://newsapi.org',          label: 'NewsAPI.org' },
+                { href: 'https://groq.com',             label: 'Groq LLaMA' },
+                { href: 'https://leafletjs.com',        label: 'Leaflet.js' },
+                { href: 'https://cartodb.com',          label: 'CartoDB Tiles' },
               ].map((l) => (
                 <li key={l.href}>
-                  <a
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-                  >
+                  <a href={l.href} target="_blank" rel="noopener noreferrer"
+                    className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
                     {l.label}
                   </a>
                 </li>
@@ -130,8 +120,8 @@ export default function Footer() {
             <Link href="/monetization-policy" className="hover:text-gray-400 transition-colors">Monetization Policy</Link>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-1 text-xs text-gray-700">
-            <p>© {year} WarWatch.World — MIT License. Not affiliated with any government or intelligence agency.</p>
-            <p>Data for informational purposes only. Verify through official sources.</p>
+            <p>{t('footer.copyright', { year })}</p>
+            <p>{t('footer.disclaimer')}</p>
           </div>
         </div>
       </div>
