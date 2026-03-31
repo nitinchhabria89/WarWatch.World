@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "map": "Karte",
+    "wars": "Aktive Konflikte",
+    "aiAnalyst": "KI-Analyst",
+    "reports": "Berichte",
+    "markets": "Märkte",
+    "github": "GitHub"
+  },
+  "home": {
+    "trackedConflicts": "{count} verfolgte Konflikte",
+    "dataRefreshes": "Daten werden stündlich aktualisiert",
+    "clickToView": "Klicken Sie auf einen Konfliktmarker auf der Karte, um Details anzuzeigen"
+  },
+  "wars": {
+    "title": "Aktive Konflikte",
+    "subtitle": "{count} verfolgte Konflikte · Klicken Sie auf eine Zeile, um das Ereignisprotokoll zu erweitern",
+    "filters": { "all": "Alle", "severity": "Schweregrad:", "tag": "Tag:" },
+    "noResults": "Keine Konflikte entsprechen den ausgewählten Filtern."
+  },
+  "aiAnalyst": {
+    "title": "KI-Analyst",
+    "subtitle": "Betrieben von Claude · Echtzeit-Konfliktkontext",
+    "placeholder": "Fragen Sie nach einem aktiven Konflikt…",
+    "disclaimer": "KI-Analyse betrieben von Claude · Nur zu Informationszwecken",
+    "about": "Über dieses Tool"
+  },
+  "reports": {
+    "title": "Geheimdienstberichte",
+    "subtitle": "Täglich KI-generierte Briefings · Alle 24 Stunden aktualisiert",
+    "noReports": "Noch keine Berichte generiert.",
+    "latest": "Neueste",
+    "allReports": "Alle Berichte"
+  },
+  "markets": {
+    "title": "Märkte und Konfliktauswirkungen",
+    "subtitle": "Wie aktive Konflikte mit dem Rohstoffpreisdruck korrelieren",
+    "totalConflicts": "Gesamtkonflikte",
+    "highOilRisk": "Hohes Ölrisiko",
+    "highGoldRisk": "Hohes Goldrisiko",
+    "riskLevel": "Risikoniveau",
+    "chokepoints": "Kritische Engpässe in Gefahr"
+  },
+  "severity": {
+    "war": "Aktiver Krieg",
+    "escalating": "Eskalierend",
+    "instability": "Instabilität",
+    "stable": "Stabil"
+  },
+  "footer": {
+    "description": "Echtzeit-Verfolgung globaler Krisen. Kostenlos und Open-Source.",
+    "disclaimer": "Daten nur zu Informationszwecken. Überprüfen Sie mit offiziellen Quellen.",
+    "copyright": "© {year} WarWatch.World — MIT-Lizenz"
+  }
+}

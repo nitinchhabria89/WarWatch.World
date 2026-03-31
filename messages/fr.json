@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "map": "Carte",
+    "wars": "Conflits actifs",
+    "aiAnalyst": "Analyste IA",
+    "reports": "Rapports",
+    "markets": "Marchés",
+    "github": "GitHub"
+  },
+  "home": {
+    "trackedConflicts": "{count} conflits suivis",
+    "dataRefreshes": "Données actualisées toutes les heures",
+    "clickToView": "Cliquez sur un marqueur de conflit sur la carte pour voir les détails"
+  },
+  "wars": {
+    "title": "Conflits actifs",
+    "subtitle": "{count} conflits suivis · Cliquez sur une ligne pour développer le journal des événements",
+    "filters": { "all": "Tous", "severity": "Gravité :", "tag": "Étiquette :" },
+    "noResults": "Aucun conflit ne correspond aux filtres sélectionnés."
+  },
+  "aiAnalyst": {
+    "title": "Analyste IA",
+    "subtitle": "Propulsé par Claude · Contexte conflictuel en temps réel",
+    "placeholder": "Posez une question sur un conflit actif…",
+    "disclaimer": "Analyse IA propulsée par Claude · À titre informatif seulement",
+    "about": "À propos de cet outil"
+  },
+  "reports": {
+    "title": "Rapports de renseignement",
+    "subtitle": "Briefings quotidiens générés par IA · Mis à jour toutes les 24 heures",
+    "noReports": "Aucun rapport généré pour l'instant.",
+    "latest": "Dernier",
+    "allReports": "Tous les rapports"
+  },
+  "markets": {
+    "title": "Marchés et impact des conflits",
+    "subtitle": "Comment les conflits actifs corrèlent avec la pression sur les prix des matières premières",
+    "totalConflicts": "Total des conflits",
+    "highOilRisk": "Risque pétrolier élevé",
+    "highGoldRisk": "Risque or élevé",
+    "riskLevel": "Niveau de risque",
+    "chokepoints": "Points d'étranglement critiques à risque"
+  },
+  "severity": {
+    "war": "Guerre active",
+    "escalating": "Escalade",
+    "instability": "Instabilité",
+    "stable": "Stable"
+  },
+  "footer": {
+    "description": "Suivi en temps réel des crises mondiales. Gratuit et open-source.",
+    "disclaimer": "Données à titre informatif uniquement. Vérifiez auprès des sources officielles.",
+    "copyright": "© {year} WarWatch.World — Licence MIT"
+  }
+}
