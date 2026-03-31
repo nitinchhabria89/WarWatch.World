@@ -10,28 +10,46 @@ interface NewsArticle {
   source: { name: string };
 }
 
+// Fetch news for a single conflict. Uses the conflict name as primary query
+// for precision, falls back to country names.
 export async function fetchConflictNews(conflict: Conflict): Promise<ConflictEvent[]> {
   const apiKey = process.env.NEWSAPI_KEY;
   if (!apiKey) return [];
 
-  const query = conflict.countries.slice(0, 2).join(' OR ');
-  const from = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString().slice(0, 10);
-  const url = `${BASE_URL}/everything?q=${encodeURIComponent(query)}&sortBy=publishedAt&from=${from}&pageSize=5&language=en&apiKey=${apiKey}`;
+  // Use conflict name + first country for a tight, relevant query
+  const terms = [conflict.name, conflict.countries[0]].filter(Boolean);
+  const query = terms.map((t) => `"${t}"`).join(' OR ');
 
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) return [];
+  const url = `${BASE_URL}/everything?q=${encodeURIComponent(query)}&sortBy=publishedAt&pageSize=5&language=en&apiKey=${apiKey}`;
 
-  const data = await res.json();
-  const articles: NewsArticle[] = data.articles ?? [];
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) {
+      console.error(`[newsapi] ${conflict.id}: HTTP ${res.status}`);
+      return [];
+    }
 
-  return articles
-    .filter((a) => a.title && a.description)
-    .map((a) => ({
-      date: a.publishedAt.slice(0, 10),
-      description: `${a.title}. ${a.description ?? ''}`.slice(0, 300),
-      tags: inferTags(a.title),
-      source: a.source.name,
-    }));
+    const data = await res.json();
+
+    if (data.status !== 'ok') {
+      console.error(`[newsapi] ${conflict.id}: ${data.message ?? 'unknown error'}`);
+      return [];
+    }
+
+    const articles: NewsArticle[] = data.articles ?? [];
+
+    return articles
+      .filter((a) => a.title && a.title !== '[Removed]')
+      .map((a) => ({
+        date: a.publishedAt.slice(0, 10),
+        description: `${a.title}${a.description ? '. ' + a.description : ''}`.slice(0, 300),
+        tags: inferTags(a.title),
+        source: a.source.name,
+      }));
+  } catch (err) {
+    console.error(`[newsapi] ${conflict.id}:`, err);
+    return [];
+  }
 }
 
 function inferTags(title: string): string[] {
