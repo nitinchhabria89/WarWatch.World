@@ -10,20 +10,30 @@
   "home": {
     "trackedConflicts": "{count} takip edilen çatışma",
     "dataRefreshes": "Veriler saatte bir güncellenir",
-    "clickToView": "Ayrıntıları görüntülemek için haritadaki çatışma işaretçisine tıklayın"
+    "clickToView": "Ayrıntıları görüntülemek için haritadaki çatışma işaretçisine tıklayın",
+    "severityLegend": "Şiddet göstergesi",
+    "latestFeed": "Son istihbarat haberleri",
+    "allEvents": "Tüm olaylar",
+    "loading": "Çatışma verileri yükleniyor…"
   },
   "wars": {
     "title": "Aktif Çatışmalar",
     "subtitle": "{count} takip edilen çatışma · Tam olay günlüğünü genişletmek için herhangi bir satıra tıklayın",
-    "filters": { "all": "Tümü", "severity": "Şiddet:", "tag": "Etiket:" },
-    "noResults": "Seçilen filtrelere uyan çatışma yok."
+    "filters": {
+      "all": "Tümü",
+      "severity": "Şiddet:",
+      "tag": "Etiket:"
+    },
+    "noResults": "Seçilen filtrelere uyan çatışma yok.",
+    "quickStats": "Hızlı istatistikler"
   },
   "aiAnalyst": {
     "title": "YZ Analist",
     "subtitle": "Claude tarafından desteklenmektedir · Gerçek zamanlı çatışma bağlamı",
     "placeholder": "Herhangi bir aktif çatışma hakkında sorun…",
     "disclaimer": "Claude tarafından YZ analizi · Yalnızca bilgilendirme amaçlıdır",
-    "about": "Bu Araç Hakkında"
+    "about": "Bu Araç Hakkında",
+    "welcome": "Aktif küresel çatışmalar hakkında her şeyi sorabilirsiniz."
   },
   "reports": {
     "title": "İstihbarat Raporları",
@@ -51,5 +61,19 @@
     "description": "Gerçek zamanlı küresel kriz takibi. Ücretsiz ve açık kaynak.",
     "disclaimer": "Veriler yalnızca bilgilendirme amaçlıdır. Resmi kaynaklarla doğrulayın.",
     "copyright": "© {year} WarWatch.World — MIT Lisansı"
+  },
+  "panel": {
+    "critical": "Kritik — En çok izlenen",
+    "globalImpact": "Küresel etki",
+    "status": "Mevcut durum",
+    "summary": "Özet",
+    "tags": "Etiketler",
+    "marketImpact": "Piyasa etkisi",
+    "recentEvents": "Son olaylar",
+    "lastUpdated": "Son güncelleme:",
+    "close": "Paneli kapat"
+  },
+  "breaking": {
+    "label": "SON DAKİKA"
   }
 }

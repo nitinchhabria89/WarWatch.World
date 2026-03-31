@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import type { ChatMessage } from '@/lib/types';
 import clsx from 'clsx';
+import { useLocale } from './LocaleProvider';
 
 const SUGGESTED_PROMPTS = [
   'What is the current situation in Ukraine?',
@@ -32,6 +33,7 @@ function MessageBubble({ message }: { message: ChatMessage }) {
 }
 
 export default function AIChatInterface() {
+  const { t } = useLocale();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
@@ -113,9 +115,7 @@ export default function AIChatInterface() {
         {messages.length === 0 && (
           <div className="text-center pt-8">
             <div className="text-3xl mb-3">🤖</div>
-            <p className="text-gray-400 text-sm mb-6">
-              Ask me anything about active global conflicts, geopolitical trends, or military situations.
-            </p>
+            <p className="text-gray-400 text-sm mb-6">{t('aiAnalyst.welcome')}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {SUGGESTED_PROMPTS.map((prompt) => (
                 <button
@@ -163,7 +163,7 @@ export default function AIChatInterface() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask about any active conflict…"
+            placeholder={t('aiAnalyst.placeholder')}
             rows={1}
             className="flex-1 bg-[#1A2035] border border-white/10 rounded-lg px-3 py-2.5 text-sm text-white placeholder-gray-600 resize-none focus:outline-none focus:border-blue-500/50 transition-colors"
             style={{ maxHeight: '120px', overflowY: 'auto' }}

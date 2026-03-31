@@ -10,20 +10,30 @@
   "home": {
     "trackedConflicts": "{count} verfolgte Konflikte",
     "dataRefreshes": "Daten werden stündlich aktualisiert",
-    "clickToView": "Klicken Sie auf einen Konfliktmarker auf der Karte, um Details anzuzeigen"
+    "clickToView": "Klicken Sie auf einen Konfliktmarker auf der Karte, um Details anzuzeigen",
+    "severityLegend": "Schweregradlegende",
+    "latestFeed": "Neueste Geheimdienstberichte",
+    "allEvents": "Alle Ereignisse",
+    "loading": "Konfliktdaten werden geladen…"
   },
   "wars": {
     "title": "Aktive Konflikte",
     "subtitle": "{count} verfolgte Konflikte · Klicken Sie auf eine Zeile, um das Ereignisprotokoll zu erweitern",
-    "filters": { "all": "Alle", "severity": "Schweregrad:", "tag": "Tag:" },
-    "noResults": "Keine Konflikte entsprechen den ausgewählten Filtern."
+    "filters": {
+      "all": "Alle",
+      "severity": "Schweregrad:",
+      "tag": "Tag:"
+    },
+    "noResults": "Keine Konflikte entsprechen den ausgewählten Filtern.",
+    "quickStats": "Schnellstatistiken"
   },
   "aiAnalyst": {
     "title": "KI-Analyst",
     "subtitle": "Betrieben von Claude · Echtzeit-Konfliktkontext",
     "placeholder": "Fragen Sie nach einem aktiven Konflikt…",
     "disclaimer": "KI-Analyse betrieben von Claude · Nur zu Informationszwecken",
-    "about": "Über dieses Tool"
+    "about": "Über dieses Tool",
+    "welcome": "Fragen Sie mich alles über aktive globale Konflikte."
   },
   "reports": {
     "title": "Geheimdienstberichte",
@@ -51,5 +61,19 @@
     "description": "Echtzeit-Verfolgung globaler Krisen. Kostenlos und Open-Source.",
     "disclaimer": "Daten nur zu Informationszwecken. Überprüfen Sie mit offiziellen Quellen.",
     "copyright": "© {year} WarWatch.World — MIT-Lizenz"
+  },
+  "panel": {
+    "critical": "Kritisch — Meistbeobachtet",
+    "globalImpact": "Globale Auswirkungen",
+    "status": "Aktueller Status",
+    "summary": "Zusammenfassung",
+    "tags": "Tags",
+    "marketImpact": "Marktauswirkungen",
+    "recentEvents": "Aktuelle Ereignisse",
+    "lastUpdated": "Zuletzt aktualisiert:",
+    "close": "Panel schließen"
+  },
+  "breaking": {
+    "label": "EILMELDUNG"
   }
 }

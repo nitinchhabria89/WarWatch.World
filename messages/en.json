@@ -10,24 +10,43 @@
   "home": {
     "trackedConflicts": "{count} tracked conflicts",
     "dataRefreshes": "Data refreshes hourly",
-    "clickToView": "Click a conflict marker on the map to view details"
+    "clickToView": "Click a conflict marker on the map to view details",
+    "severityLegend": "Severity Legend",
+    "latestFeed": "Latest Intelligence Feed",
+    "allEvents": "All Events",
+    "loading": "Loading conflict data…"
   },
   "wars": {
     "title": "Active Conflicts",
     "subtitle": "{count} tracked conflicts · Click any row to expand the full event log",
-    "filters": {
-      "all": "All",
-      "severity": "Severity:",
-      "tag": "Tag:"
-    },
-    "noResults": "No conflicts match the selected filters."
+    "filters": { "all": "All", "severity": "Severity:", "tag": "Tag:" },
+    "noResults": "No conflicts match the selected filters.",
+    "quickStats": "Quick Stats"
+  },
+  "panel": {
+    "critical": "Critical — Most Watched",
+    "globalImpact": "Global Impact",
+    "status": "Current Status",
+    "summary": "Summary",
+    "tags": "Tags",
+    "marketImpact": "Market Impact",
+    "recentEvents": "Recent Events",
+    "lastUpdated": "Last updated:",
+    "close": "Close panel"
+  },
+  "severity": {
+    "war": "Active War",
+    "escalating": "Escalating",
+    "instability": "Instability",
+    "stable": "Stable"
   },
   "aiAnalyst": {
     "title": "AI Analyst",
-    "subtitle": "Powered by Claude · Real-time conflict context · Ask anything about global crises",
+    "subtitle": "Powered by Groq · Real-time conflict context · Ask anything about global crises",
     "placeholder": "Ask about any active conflict…",
-    "disclaimer": "AI analysis powered by Claude · For informational purposes only",
-    "about": "About This Tool"
+    "disclaimer": "AI analysis powered by Groq · For informational purposes only",
+    "about": "About This Tool",
+    "welcome": "Ask me anything about active global conflicts, geopolitical trends, or military situations."
   },
   "reports": {
     "title": "Intelligence Reports",
@@ -45,11 +64,8 @@
     "riskLevel": "Risk Level",
     "chokepoints": "Critical Chokepoints at Risk"
   },
-  "severity": {
-    "war": "Active War",
-    "escalating": "Escalating",
-    "instability": "Instability",
-    "stable": "Stable"
+  "breaking": {
+    "label": "BREAKING"
   },
   "footer": {
     "description": "Free, open-source real-time global crisis tracking. Powered by AI analysis and NewsAPI.",

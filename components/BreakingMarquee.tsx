@@ -3,12 +3,14 @@
 import { useMemo } from 'react';
 import type { Conflict } from '@/lib/types';
 import { SEVERITY_COLORS } from '@/lib/types';
+import { useLocale } from './LocaleProvider';
 
 interface Props {
   conflicts: Conflict[];
 }
 
 export default function BreakingMarquee({ conflicts }: Props) {
+  const { t } = useLocale();
   const items = useMemo(() => {
     const flat: Array<{ name: string; severity: string; description: string; color: string }> = [];
     conflicts.forEach((c) => {
@@ -36,7 +38,7 @@ export default function BreakingMarquee({ conflicts }: Props) {
       <div className="shrink-0 flex items-center gap-2 px-4 bg-red-600 z-10 select-none">
         <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
         <span className="text-white text-[11px] font-black uppercase tracking-[0.15em] whitespace-nowrap">
-          Breaking
+          {t('breaking.label')}
         </span>
       </div>
 
