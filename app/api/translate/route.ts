@@ -4,7 +4,14 @@ import { NextRequest, NextResponse } from 'next/server';
 // Responses are cached by the caller (localStorage) to minimise requests.
 async function googleTranslate(text: string, target: string): Promise<string> {
   const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${target}&dt=t&q=${encodeURIComponent(text)}`;
-  const res = await fetch(url, { next: { revalidate: 86400 } }); // cache 24h on edge
+  const res = await fetch(url, {
+    next: { revalidate: 86400 },
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Referer': 'https://translate.google.com/',
+    },
+  });
   if (!res.ok) throw new Error(`Translate HTTP ${res.status}`);
   const data = await res.json();
   // Response shape: [ [ [translated, original], ... ], ... ]
