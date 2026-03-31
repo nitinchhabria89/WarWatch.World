@@ -9,7 +9,7 @@ export async function POST() {
     return NextResponse.json({ error: 'NEWSAPI_KEY not configured' }, { status: 503 });
   }
 
-  const conflicts = getConflicts();
+  const conflicts = await getConflicts();
   const today = new Date().toISOString().slice(0, 10);
   let updated = 0;
 
@@ -27,6 +27,6 @@ export async function POST() {
     }
   }
 
-  saveConflicts(conflicts);
+  await saveConflicts(conflicts);
   return NextResponse.json({ updated, timestamp: new Date().toISOString() });
 }

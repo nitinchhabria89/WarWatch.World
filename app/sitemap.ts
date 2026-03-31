@@ -4,8 +4,8 @@ import { listReportDates } from '@/lib/conflicts';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://warwatch.world';
 const NOW = new Date();
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const reportDates = listReportDates();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const reportDates = await listReportDates();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: SITE_URL,                           changeFrequency: 'hourly',  priority: 1.0, lastModified: NOW },

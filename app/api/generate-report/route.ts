@@ -15,10 +15,10 @@ export async function POST() {
   const today = new Date().toISOString().slice(0, 10);
 
   // Return cached report if already generated today
-  const cached = getReport(today);
+  const cached = await getReport(today);
   if (cached) return NextResponse.json(cached);
 
-  const conflicts = getConflicts();
+  const conflicts = await getConflicts();
   const conflictSummary = conflicts
     .map((c) => `**${c.name}** (${c.severity}): ${c.status}`)
     .join('\n');
@@ -64,6 +64,6 @@ Produce a JSON object with this exact structure:
     generatedAt: new Date().toISOString(),
   };
 
-  saveReport(report);
+  await saveReport(report);
   return NextResponse.json(report);
 }

@@ -21,12 +21,12 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://warwatch.world/wars' },
 };
 
-export default function WarsPage({
+export default async function WarsPage({
   searchParams,
 }: {
   searchParams: { tag?: string; severity?: string };
 }) {
-  const conflicts = getConflicts();
+  const conflicts = await getConflicts();
   const { tag, severity } = searchParams;
 
   return (

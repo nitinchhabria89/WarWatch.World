@@ -36,8 +36,8 @@ const IMPACT_ICONS: Record<string, string> = {
   none: '⚪',
 };
 
-export default function MarketsPage() {
-  const conflicts = getConflicts();
+export default async function MarketsPage() {
+  const conflicts = await getConflicts();
   const highImpactOil = conflicts.filter((c) => c.marketImpact.oil === 'high').length;
   const highImpactGold = conflicts.filter((c) => c.marketImpact.gold === 'high').length;
 

@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
   const { message, history = [] }: { message: string; history: ChatMessage[] } = await req.json();
 
-  const conflicts = getConflicts();
+  const conflicts = await getConflicts();
   const context = conflicts
     .map((c) => `• ${c.name} (${c.severity}): ${c.status}`)
     .join('\n');

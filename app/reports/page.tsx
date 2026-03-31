@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://warwatch.world/reports' },
 };
 
-export default function ReportsPage() {
-  const dates = listReportDates();
-  const latest = dates[0] ? getReport(dates[0]) : null;
+export default async function ReportsPage() {
+  const dates = await listReportDates();
+  const latest = dates[0] ? await getReport(dates[0]) : null;
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 py-8">
@@ -65,8 +65,8 @@ export default function ReportsPage() {
                 </Link>
               )}
 
-              {dates.slice(1).map((date) => {
-                const report = getReport(date);
+              {await Promise.all(dates.slice(1).map(async (date) => {
+                const report = await getReport(date);
                 if (!report) return null;
                 return (
                   <Link
@@ -85,7 +85,7 @@ export default function ReportsPage() {
                     </div>
                   </Link>
                 );
-              })}
+              }))}
             </>
           )}
         </div>

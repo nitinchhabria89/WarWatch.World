@@ -13,10 +13,9 @@ function getLastUpdated(conflicts: Conflict[]): number {
 }
 
 export async function GET(request: Request) {
-  const conflicts = getConflicts();
+  const conflicts = await getConflicts();
 
   // Trigger a background refresh if data is older than 1 hour.
-  // Uses the request URL to build an absolute URL for the internal fetch.
   const lastUpdated = getLastUpdated(conflicts);
   if (Date.now() - lastUpdated > REFRESH_INTERVAL_MS) {
     const base = new URL(request.url).origin;
