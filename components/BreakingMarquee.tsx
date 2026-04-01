@@ -36,8 +36,6 @@ export default function BreakingMarquee({ conflicts }: Props) {
 
   const ticker = [...items, ...items];
 
-  const ticker = [...items, ...items];
-
   return (
     <div
       className="cr-marquee-wrap flex items-stretch overflow-hidden border-b border-white/5 bg-[#09101F]"

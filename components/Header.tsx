@@ -115,28 +115,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <span className="hidden md:block text-xs text-gray-600 font-mono shrink-0">{utcTime}</span>
 
-            {/* Language toggle */}
-            <button
-              onClick={() => setLangOpen((v) => !v)}
-              className={clsx(
-                'flex items-center gap-1.5 px-2 py-1.5 rounded border transition-colors text-sm font-semibold',
-                langOpen
-                  ? 'border-blue-500/50 bg-blue-500/10 text-blue-400'
-                  : 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5'
-              )}
-              aria-label="Select language"
-              aria-expanded={langOpen}
-              title="Change language"
-            >
-              <span className="text-base leading-none">{currentMeta.flag}</span>
-              <span className="hidden sm:inline text-[11px] uppercase tracking-wide">{locale}</span>
-              <svg
-                className={clsx('w-3 h-3 transition-transform hidden sm:block', langOpen && 'rotate-180')}
-                fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+            {/* Language toggle — hidden until translation is fixed */}
 
             {/* Dark / Light toggle */}
             <button
@@ -204,8 +183,8 @@ export default function Header() {
         )}
       </header>
 
-      {/* Language Dropdown — fixed below header */}
-      {langOpen && (
+      {/* Language Dropdown — hidden until translation is fixed */}
+      {false && langOpen && (
         <div
           ref={langDropRef}
           className="fixed top-14 right-4 z-[9999] shadow-2xl rounded-xl overflow-hidden border border-white/10 w-52"
