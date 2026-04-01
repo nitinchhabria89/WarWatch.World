@@ -5,26 +5,8 @@
 /* ══════════════════════════════════════
    THEME VARIABLES
 ══════════════════════════════════════ */
+/* Light is the default theme */
 :root,
-html.dark {
-  color-scheme: dark;
-  --cr-bg:          #0A0F1E;
-  --cr-bg-alt:      #070C1A;
-  --cr-card:        #111827;
-  --cr-elevated:    #1A2035;
-  --cr-text:        #f3f4f6;
-  --cr-text-muted:  #9ca3af;
-  --cr-text-dim:    #6b7280;
-  --cr-border:      rgba(255, 255, 255, 0.1);
-  --cr-border-sub:  rgba(255, 255, 255, 0.06);
-  --cr-header-bg:   rgba(10, 15, 30, 0.95);
-  --cr-overlay:     rgba(17, 24, 39, 0.88);
-  --cr-map-bg:      #0A0F1E;
-  --cr-input-bg:    rgba(255,255,255,0.05);
-  --cr-hover:       rgba(255,255,255,0.04);
-  --cr-hover2:      rgba(255,255,255,0.07);
-}
-
 html.light {
   color-scheme: light;
   --cr-bg:          #f1f5f9;
@@ -44,6 +26,25 @@ html.light {
   --cr-hover2:      rgba(0,0,0,0.06);
 }
 
+html.dark {
+  color-scheme: dark;
+  --cr-bg:          #0A0F1E;
+  --cr-bg-alt:      #070C1A;
+  --cr-card:        #111827;
+  --cr-elevated:    #1A2035;
+  --cr-text:        #f3f4f6;
+  --cr-text-muted:  #9ca3af;
+  --cr-text-dim:    #6b7280;
+  --cr-border:      rgba(255, 255, 255, 0.1);
+  --cr-border-sub:  rgba(255, 255, 255, 0.06);
+  --cr-header-bg:   rgba(10, 15, 30, 0.95);
+  --cr-overlay:     rgba(17, 24, 39, 0.88);
+  --cr-map-bg:      #0A0F1E;
+  --cr-input-bg:    rgba(255,255,255,0.05);
+  --cr-hover:       rgba(255,255,255,0.04);
+  --cr-hover2:      rgba(255,255,255,0.07);
+}
+
 /* ══════════════════════════════════════
    BASE STYLES
 ══════════════════════════════════════ */
@@ -54,6 +55,7 @@ body {
   color: var(--cr-text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
 }
 
 /* ══════════════════════════════════════

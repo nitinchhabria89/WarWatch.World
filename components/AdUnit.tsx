@@ -24,6 +24,7 @@ function isValidPubId(id: string | undefined): id is string {
 const BRANDS = [
   {
     name: 'Facebook',
+    href: 'https://www.facebook.com/business/ads',
     bg: '#1877F2',
     accent: '#ffffff',
     logo: (
@@ -31,11 +32,7 @@ const BRANDS = [
         <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
       </svg>
     ),
-    headlines: [
-      'Reach 3 Billion People',
-      'Grow Your Business',
-      'Run Smarter Ads',
-    ],
+    headlines: ['Reach 3 Billion People', 'Grow Your Business', 'Run Smarter Ads'],
     ctas: ['Advertise Now', 'Get Started', 'Learn More'],
     sublines: {
       wide: 'Facebook & Instagram ads that reach the right audience at the right time.',
@@ -45,6 +42,7 @@ const BRANDS = [
   },
   {
     name: 'LinkedIn',
+    href: 'https://business.linkedin.com/marketing-solutions/ads',
     bg: '#0A66C2',
     accent: '#ffffff',
     logo: (
@@ -52,11 +50,7 @@ const BRANDS = [
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
       </svg>
     ),
-    headlines: [
-      'Reach 1B Professionals',
-      'B2B Ads That Convert',
-      'Target by Job Title',
-    ],
+    headlines: ['Reach 1B Professionals', 'B2B Ads That Convert', 'Target by Job Title'],
     ctas: ['Start Campaign', 'Advertise Free', 'Try LinkedIn Ads'],
     sublines: {
       wide: 'LinkedIn Ads · Reach decision-makers in any industry worldwide.',
@@ -66,6 +60,7 @@ const BRANDS = [
   },
   {
     name: 'Google',
+    href: 'https://ads.google.com/home/',
     bg: '#ffffff',
     accent: '#1a1a1a',
     logo: (
@@ -76,11 +71,7 @@ const BRANDS = [
         <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
       </svg>
     ),
-    headlines: [
-      'Advertise on Google',
-      'Show Up in Search',
-      'Google Ads — Get Found',
-    ],
+    headlines: ['Advertise on Google', 'Show Up in Search', 'Google Ads — Get Found'],
     ctas: ['Start for Free', 'Create an Ad', 'Get $600 Credit'],
     sublines: {
       wide: 'Google Ads · Appear at the top of search results when people look for you.',
@@ -90,6 +81,7 @@ const BRANDS = [
   },
   {
     name: 'WhatsApp',
+    href: 'https://business.whatsapp.com/',
     bg: '#25D366',
     accent: '#ffffff',
     logo: (
@@ -97,11 +89,7 @@ const BRANDS = [
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
     ),
-    headlines: [
-      'WhatsApp Business Ads',
-      'Chat with Customers',
-      'Sell via WhatsApp',
-    ],
+    headlines: ['WhatsApp Business Ads', 'Chat with Customers', 'Sell via WhatsApp'],
     ctas: ['Try for Free', 'Send a Message', 'Get Started'],
     sublines: {
       wide: 'WhatsApp Business · Drive conversations and sales directly in chat.',
@@ -128,66 +116,73 @@ function DummyAd({ slot, width, height }: { slot: string; width: number | string
   const textColor = isGoogle ? '#1a1a1a' : 'white';
   const mutedColor = isGoogle ? '#5f6368' : 'rgba(255,255,255,0.8)';
   const ctaBg = isGoogle ? '#1a73e8' : 'rgba(255,255,255,0.2)';
-  const ctaText = isGoogle ? 'white' : 'white';
+  const ctaText = 'white';
   const ctaBorder = isGoogle ? 'none' : '1.5px solid rgba(255,255,255,0.5)';
+
+  const wrapStyle: React.CSSProperties = {
+    display: 'block',
+    width: '100%',
+    maxWidth: w,
+    textDecoration: 'none',
+    cursor: 'pointer',
+  };
 
   // ── Wide banner: 728×90, 970×250, 320×50 ────────────────────────
   if (h <= 100) {
     return (
-      <div
-        style={{ width: w, height: h, background: brand.bg, position: 'relative', overflow: 'hidden', borderRadius: 6, display: 'flex', alignItems: 'center', padding: '0 16px', gap: 12, boxSizing: 'border-box' }}
-      >
-        <div style={{ width: h * 0.55, height: h * 0.55, flexShrink: 0 }}>{brand.logo}</div>
-        <div style={{ flex: 1, overflow: 'hidden' }}>
-          <div style={{ fontWeight: 700, fontSize: Math.min(h * 0.28, 15), color: textColor, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: 'system-ui, sans-serif' }}>{headline}</div>
-          {h > 55 && <div style={{ fontSize: Math.min(h * 0.18, 11), color: mutedColor, marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: 'system-ui, sans-serif' }}>{brand.sublines.banner}</div>}
+      <a href={brand.href} target="_blank" rel="noopener noreferrer" style={wrapStyle}>
+        <div style={{ width: '100%', height: h, background: brand.bg, position: 'relative', overflow: 'hidden', borderRadius: 6, display: 'flex', alignItems: 'center', padding: '0 16px', gap: 12, boxSizing: 'border-box' }}>
+          <div style={{ width: h * 0.55, height: h * 0.55, flexShrink: 0 }}>{brand.logo}</div>
+          <div style={{ flex: 1, overflow: 'hidden', minWidth: 0 }}>
+            <div style={{ fontWeight: 700, fontSize: Math.min(h * 0.28, 15), color: textColor, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: 'system-ui, sans-serif' }}>{headline}</div>
+            {h > 55 && <div style={{ fontSize: Math.min(h * 0.18, 11), color: mutedColor, marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: 'system-ui, sans-serif' }}>{brand.sublines.banner}</div>}
+          </div>
+          <div style={{ flexShrink: 0, background: ctaBg, border: ctaBorder, color: ctaText, fontWeight: 600, fontSize: Math.min(h * 0.22, 12), padding: `${h * 0.12}px ${h * 0.22}px`, borderRadius: 4, whiteSpace: 'nowrap', fontFamily: 'system-ui, sans-serif' }}>{cta}</div>
+          <AdLabel />
         </div>
-        <div style={{ flexShrink: 0, background: ctaBg, border: ctaBorder, color: ctaText, fontWeight: 600, fontSize: Math.min(h * 0.22, 12), padding: `${h * 0.12}px ${h * 0.22}px`, borderRadius: 4, whiteSpace: 'nowrap', fontFamily: 'system-ui, sans-serif', cursor: 'pointer' }}>{cta}</div>
-        <AdLabel />
-      </div>
+      </a>
     );
   }
 
   // ── Square / Medium rectangle: 300×250 ──────────────────────────
   if (w <= 320 && h <= 300) {
     return (
-      <div style={{ width: w, height: h, background: brand.bg, borderRadius: 8, overflow: 'hidden', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: 20, boxSizing: 'border-box', fontFamily: 'system-ui, sans-serif' }}>
-        <div style={{ width: 52, height: 52 }}>{brand.logo}</div>
-        <div style={{ fontWeight: 800, fontSize: 18, color: textColor, textAlign: 'center', lineHeight: 1.2 }}>{headline}</div>
-        <div style={{ fontSize: 12, color: mutedColor, textAlign: 'center', lineHeight: 1.5 }}>{brand.sublines.square}</div>
-        <div style={{ background: ctaBg, border: ctaBorder, color: ctaText, fontWeight: 700, fontSize: 13, padding: '9px 22px', borderRadius: 6, cursor: 'pointer', marginTop: 4 }}>{cta}</div>
-        <AdLabel />
-      </div>
+      <a href={brand.href} target="_blank" rel="noopener noreferrer" style={wrapStyle}>
+        <div style={{ width: '100%', height: h, background: brand.bg, borderRadius: 8, overflow: 'hidden', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: 20, boxSizing: 'border-box', fontFamily: 'system-ui, sans-serif' }}>
+          <div style={{ width: 52, height: 52 }}>{brand.logo}</div>
+          <div style={{ fontWeight: 800, fontSize: 18, color: textColor, textAlign: 'center', lineHeight: 1.2 }}>{headline}</div>
+          <div style={{ fontSize: 12, color: mutedColor, textAlign: 'center', lineHeight: 1.5 }}>{brand.sublines.square}</div>
+          <div style={{ background: ctaBg, border: ctaBorder, color: ctaText, fontWeight: 700, fontSize: 13, padding: '9px 22px', borderRadius: 6, marginTop: 4 }}>{cta}</div>
+          <AdLabel />
+        </div>
+      </a>
     );
   }
 
   // ── Tall sidebar: 300×600, 160×600 ──────────────────────────────
-  const colors4 = ['#1877F2','#0A66C2','#4285F4','#25D366'];
+  const colors4 = ['#1877F2', '#0A66C2', '#4285F4', '#25D366'];
   return (
-    <div style={{ width: w, height: h, background: brand.bg, borderRadius: 8, overflow: 'hidden', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around', padding: '28px 16px', boxSizing: 'border-box', fontFamily: 'system-ui, sans-serif' }}>
-      {/* decorative circles */}
-      <div style={{ position: 'absolute', top: -40, right: -40, width: 160, height: 160, borderRadius: '50%', background: 'rgba(255,255,255,0.07)' }} />
-      <div style={{ position: 'absolute', bottom: -30, left: -30, width: 120, height: 120, borderRadius: '50%', background: 'rgba(255,255,255,0.05)' }} />
-
-      <div style={{ width: 64, height: 64 }}>{brand.logo}</div>
-      <div>
-        <div style={{ fontWeight: 800, fontSize: w < 200 ? 15 : 22, color: textColor, textAlign: 'center', lineHeight: 1.2, marginBottom: 10 }}>{headline}</div>
-        <div style={{ fontSize: w < 200 ? 11 : 13, color: mutedColor, textAlign: 'center', lineHeight: 1.6 }}>{brand.sublines.square}</div>
+    <a href={brand.href} target="_blank" rel="noopener noreferrer" style={wrapStyle}>
+      <div style={{ width: '100%', height: h, background: brand.bg, borderRadius: 8, overflow: 'hidden', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around', padding: '28px 16px', boxSizing: 'border-box', fontFamily: 'system-ui, sans-serif' }}>
+        <div style={{ position: 'absolute', top: -40, right: -40, width: 160, height: 160, borderRadius: '50%', background: 'rgba(255,255,255,0.07)' }} />
+        <div style={{ position: 'absolute', bottom: -30, left: -30, width: 120, height: 120, borderRadius: '50%', background: 'rgba(255,255,255,0.05)' }} />
+        <div style={{ width: 64, height: 64 }}>{brand.logo}</div>
+        <div>
+          <div style={{ fontWeight: 800, fontSize: w < 200 ? 15 : 22, color: textColor, textAlign: 'center', lineHeight: 1.2, marginBottom: 10 }}>{headline}</div>
+          <div style={{ fontSize: w < 200 ? 11 : 13, color: mutedColor, textAlign: 'center', lineHeight: 1.6 }}>{brand.sublines.square}</div>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
+          {['Precise targeting', 'Real-time analytics', 'Any budget'].map((f) => (
+            <div key={f} style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.1)', borderRadius: 6, padding: '6px 10px' }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: isGoogle ? colors4[brandIdx] : 'rgba(255,255,255,0.7)', flexShrink: 0 }} />
+              <span style={{ fontSize: w < 200 ? 10 : 12, color: isGoogle ? '#444' : 'rgba(255,255,255,0.9)' }}>{f}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ background: isGoogle ? '#1a73e8' : 'rgba(255,255,255,0.95)', color: isGoogle ? 'white' : brand.bg, fontWeight: 700, fontSize: w < 200 ? 12 : 14, padding: '11px 24px', borderRadius: 8, width: '100%', textAlign: 'center' }}>{cta}</div>
+        <AdLabel />
       </div>
-
-      {/* Mini feature pills */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
-        {['Precise targeting', 'Real-time analytics', 'Any budget'].map((f, i) => (
-          <div key={f} style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.1)', borderRadius: 6, padding: '6px 10px' }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: isGoogle ? colors4[brandIdx] : 'rgba(255,255,255,0.7)', flexShrink: 0 }} />
-            <span style={{ fontSize: w < 200 ? 10 : 12, color: isGoogle ? '#444' : 'rgba(255,255,255,0.9)' }}>{f}</span>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ background: isGoogle ? '#1a73e8' : 'rgba(255,255,255,0.95)', color: isGoogle ? 'white' : brand.bg, fontWeight: 700, fontSize: w < 200 ? 12 : 14, padding: '11px 24px', borderRadius: 8, cursor: 'pointer', width: '100%', textAlign: 'center' }}>{cta}</div>
-      <AdLabel />
-    </div>
+    </a>
   );
 }
 
@@ -224,7 +219,7 @@ export default function AdUnit({ slot, format = 'auto', style, className }: Prop
 
   if (dummyMode) {
     return (
-      <div className={className}>
+      <div className={className} style={{ maxWidth: '100%', overflow: 'hidden' }}>
         <DummyAd slot={slot} width={w} height={h} />
       </div>
     );
