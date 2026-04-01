@@ -7,11 +7,6 @@ export const metadata: Metadata = {
   title: 'AI Geopolitical Analyst — Ask About Any War or Conflict',
   description:
     'Chat with an AI geopolitical analyst about any active war or conflict. Get instant, in-depth analysis on Russia-Ukraine, Gaza, Sudan and more. Powered by advanced AI with real-time conflict data.',
-  keywords: [
-    'AI geopolitical analyst', 'war analysis AI', 'conflict analysis',
-    'geopolitics AI chat', 'ask about wars', 'AI military analyst',
-    'geopolitical intelligence', 'war expert AI',
-  ],
   openGraph: {
     title: 'AI Geopolitical Analyst | WarWatch.World',
     description: 'Get instant AI-powered analysis on any active war or global conflict. Ask anything about geopolitics.',

@@ -21,28 +21,6 @@ export const metadata: Metadata = {
   },
   description:
     'Track every active war and global conflict in real time. Interactive world map, AI-powered analysis, live news updates, daily intelligence briefings and market impact. Free & open-source.',
-  keywords: [
-    'war tracker',
-    'live war map',
-    'active wars 2025',
-    'global conflict tracker',
-    'world war map',
-    'geopolitical crisis',
-    'conflict news today',
-    'warwatch',
-    'war monitor',
-    'world conflicts 2025',
-    'live conflict updates',
-    'military news',
-    'geopolitics',
-    'war news',
-    'conflict map',
-    'Russia Ukraine war',
-    'Middle East conflict',
-    'Gaza war',
-    'AI geopolitics analyst',
-    'intelligence briefing',
-  ],
   authors: [{ name: 'WarWatch.World', url: SITE_URL }],
   creator: 'WarWatch.World',
   publisher: 'WarWatch.World',
@@ -108,8 +86,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TZ2DPPBX');`,
           }}
         />
-        {/* Google AdSense */}
-        <script
+        {/* Google AdSense — afterInteractive prevents hydration mismatch */}
+        <Script
+          id="adsense-script"
+          strategy="afterInteractive"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8381089290758563"
           crossOrigin="anonymous"

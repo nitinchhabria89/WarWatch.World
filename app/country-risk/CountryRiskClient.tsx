@@ -474,7 +474,7 @@ export default function CountryRiskClient() {
 
           {/* Right sidebar */}
           <div className="space-y-4">
-            <AdUnit slot="country-risk-sidebar" style={{ width: 300, height: 600 }} />
+            <AdUnit slot="country-risk-sidebar" style={{ width: 300, height: 600 }} className="hidden lg:block" />
 
             <div className="bg-[#111827] border border-white/10 rounded-xl p-4">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Risk Scale</p>

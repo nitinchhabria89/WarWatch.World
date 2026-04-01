@@ -3,14 +3,9 @@ import { Suspense } from 'react';
 import CountryRiskClient from './CountryRiskClient';
 
 export const metadata: Metadata = {
-  title: 'Country War Risk Assessment 2026 — WarWatch.World',
+  title: 'Country War Risk Assessment 2026',
   description:
     'How current global conflicts affect your country — economic, energy, security and trade risk analysis powered by AI.',
-  keywords: [
-    'country risk assessment', 'geopolitical risk by country', 'war risk assessment',
-    'conflict impact by country', 'country security risk', 'geopolitical threat level',
-    'war impact economy', 'country risk 2026', 'national security risk',
-  ],
   openGraph: {
     title: 'Country War Risk Assessment 2026 — WarWatch.World',
     description:

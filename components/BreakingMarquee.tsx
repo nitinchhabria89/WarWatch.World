@@ -12,18 +12,22 @@ interface Props {
 export default function BreakingMarquee({ conflicts }: Props) {
   const { t } = useLocale();
   const items = useMemo(() => {
-    const flat: Array<{ name: string; severity: string; description: string; color: string }> = [];
-    conflicts.forEach((c) => {
-      c.events.forEach((e) => {
-        flat.push({
-          name: c.name,
-          severity: c.severity,
-          description: e.description,
-          color: SEVERITY_COLORS[c.severity],
-        });
-      });
-    });
-    return flat.slice(0, 25);
+    // Take up to 3 most-recent events per conflict, then interleave across conflicts
+    // so the ticker shows variety instead of all events from one conflict in a row.
+    const buckets = conflicts.map((c) =>
+      c.events.slice(0, 3).map((e) => ({
+        name: c.name,
+        severity: c.severity,
+        description: e.description,
+        color: SEVERITY_COLORS[c.severity],
+      }))
+    );
+    const interleaved: typeof buckets[0] = [];
+    const maxLen = Math.max(...buckets.map((b) => b.length));
+    for (let i = 0; i < maxLen; i++) {
+      buckets.forEach((b) => { if (b[i]) interleaved.push(b[i]); });
+    }
+    return interleaved.slice(0, 30);
   }, [conflicts]);
 
   if (!items.length) return null;

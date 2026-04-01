@@ -65,6 +65,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
+      <h1 className="sr-only">Live War &amp; Conflict Tracker 2026 — Real-Time Global Crisis Map</h1>
       {/* ── Billboard Ad (970×250) ── */}
       <div className="w-full flex justify-center items-center py-2 px-4 border-b border-white/5" style={{ background: 'var(--cr-bg-alt)' }}>
         <AdUnit

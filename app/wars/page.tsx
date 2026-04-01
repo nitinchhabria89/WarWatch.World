@@ -8,11 +8,6 @@ export const metadata: Metadata = {
   title: 'Active Wars & Conflicts 2025 — Live Updates',
   description:
     'Full list of every active war and armed conflict in 2025. Filter by severity, region and type. Chronological event logs, casualty data, and real-time updates on every ongoing conflict worldwide.',
-  keywords: [
-    'active wars 2025', 'list of wars', 'ongoing conflicts', 'armed conflicts today',
-    'war list', 'current wars in the world', 'military conflicts 2025',
-    'Russia Ukraine war', 'Gaza war', 'Sudan conflict', 'war updates today',
-  ],
   openGraph: {
     title: 'Active Wars & Conflicts 2025 — Live Updates | WarWatch.World',
     description: 'Full list of every active war and armed conflict in 2025 with live updates, event logs and severity ratings.',
