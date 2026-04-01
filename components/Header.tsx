@@ -34,7 +34,6 @@ export default function Header() {
     { href: '/wars',          label: t('nav.wars') },
     { href: '/country-risk',  label: t('nav.countryRisk') },
     { href: '/ai-analyst',    label: t('nav.aiAnalyst') },
-    { href: '/reports',       label: t('nav.reports') },
     { href: '/markets',       label: t('nav.markets') },
   ];
 
