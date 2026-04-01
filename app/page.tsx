@@ -72,7 +72,7 @@ export default function HomePage() {
           slot="1234567890"
           format="horizontal"
           style={{ width: 970, height: 90, maxWidth: '100%' }}
-          className="w-full max-w-[970px]"
+          className="flex justify-center w-full max-w-[970px]"
         />
       </div>
 

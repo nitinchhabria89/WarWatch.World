@@ -219,7 +219,7 @@ export default function AdUnit({ slot, format = 'auto', style, className }: Prop
 
   if (dummyMode) {
     return (
-      <div className={className} style={{ maxWidth: '100%', overflow: 'hidden' }}>
+      <div className={className} style={{ maxWidth: '100%', overflow: 'hidden', display: 'flex', justifyContent: 'center' }}>
         <DummyAd slot={slot} width={w} height={h} />
       </div>
     );
